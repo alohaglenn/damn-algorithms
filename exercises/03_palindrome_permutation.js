@@ -22,7 +22,13 @@ Example:
 const stringInput = 'Lisa Bonet ate no basil'
 
 const isPalindromePermutation = (str) => {
+  const set = new Set();
 
+  for (var i = 0; i < stringInput.length; i++) {
+    if (!set.has(stringInput[i])) {
+      set.delete(stringInput[i])
+    }
+  }
 };
 
 isPalindromePermutation(stringInput);
