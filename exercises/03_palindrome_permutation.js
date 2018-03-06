@@ -23,9 +23,12 @@ const stringInput = 'Lisa Bonet ate no basil'
 
 const isPalindromePermutation = (str) => {
   const set = new Set();
+  const stringSplit = [...str];
 
   for (var i = 0; i < stringInput.length; i++) {
     if (!set.has(stringInput[i])) {
+      set.add(stringInput[i])
+    } else {
       set.delete(stringInput[i])
     }
   }
