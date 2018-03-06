@@ -19,6 +19,12 @@ Example:
  * @return {Boolean}
  */
 
-const isPalindromePermutation = (str) => {};
+const stringInput = 'Lisa Bonet ate no basil'
+
+const isPalindromePermutation = (str) => {
+
+};
+
+isPalindromePermutation(stringInput);
 
 export default isPalindromePermutation;
