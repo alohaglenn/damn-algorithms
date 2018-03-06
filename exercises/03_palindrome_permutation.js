@@ -25,12 +25,13 @@ const isPalindromePermutation = (str) => {
   const set = new Set();
   const stringSplit = [...str];
 
-  for (var i = 0; i < stringInput.length; i++) {
-    if (!set.has(stringInput[i])) {
+  for (var i = 0; i < stringSplit.length; i++) {
+    if (!set.has(stringSplit[i])) {
       set.add(stringInput[i])
     } else {
-      set.delete(stringInput[i])
+      set.delete(stringSplit[i])
     }
+    return set.size <= 1;
   }
 };
 
