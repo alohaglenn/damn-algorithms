@@ -26,10 +26,10 @@ const isPalindromePermutation = (str) => {
   const stringSplit = [...str];
 
   for (var i = 0; i < stringSplit.length; i++) {
-    if (!set.has(stringSplit[i])) {
-      set.add(stringInput[i])
+    if (!set.has(str[i])) {
+      set.add(str[i])
     } else {
-      set.delete(stringSplit[i])
+      set.delete(str[i])
     }
     return set.size <= 1;
   }
