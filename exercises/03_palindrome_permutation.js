@@ -31,8 +31,8 @@ const isPalindromePermutation = (str) => {
     } else {
       set.delete(str[i])
     }
-    return set.size <= 1;
   }
+  return set.size <= 1;
 };
 
 isPalindromePermutation(stringInput);
