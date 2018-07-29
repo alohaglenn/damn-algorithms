@@ -21,10 +21,10 @@ findIndexMapping(a, b) => return [3, 0, 2, 4, 1]
  */
 
 const findIndexMapping = (a,b) => {
-  let map = new Map;
+  let indexMap = new Map;
   
-  b.forEach((track, index) => map.set(track, index))
-  return a.map((track) => map.get(track))
+  b.forEach((track, index) => indexMap.set(track, index))
+  return a.map((track) => indexMap.get(track))
 }
 
 export default findIndexMapping;
