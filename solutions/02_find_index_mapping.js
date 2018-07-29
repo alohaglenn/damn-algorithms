@@ -20,6 +20,11 @@ findIndexMapping(a, b) => return [3, 0, 2, 4, 1]
  * @return {array}
  */
 
-const findIndexMapping = (a, b) => a.map(track => b.indexOf(track));
+const findIndexMapping = (a,b) => {
+  let map = new Map;
+  
+  b.forEach((track, index) => map.set(track, index))
+  return a.map((track) => map.get(track))
+}
 
 export default findIndexMapping;
