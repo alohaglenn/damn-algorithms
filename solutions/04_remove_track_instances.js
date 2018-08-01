@@ -19,14 +19,10 @@ removeInstances(tpab, target2) => return 4
  */
 
 const removeTrackInstances = (tracklist, target) => {
-  const start = 0;
-  let currIdx = tracklist.length - 1;
-
-  while (currIdx >= start) {
-    if (tracklist[currIdx] === target) {
-      tracklist.splice(currIdx, 1);
+  for (let i = tracklist.length - 1; i >= 0; i--) {
+    if (tracklist[i] === target) {
+      tracklist.splice(i, 1);
     }
-    currIdx -= 1;
   }
 
   return tracklist.length;
