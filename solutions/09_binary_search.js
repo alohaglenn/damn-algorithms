@@ -1,11 +1,23 @@
 /*
+Binary search is a performant algorithm used to find a target value in an ordered list. It involves repeatedly dividing a list in half at each iteration after comparing the target value with the middle value of a list.
+
+A basic algorithm for binary search:
+- if the target value is in the middle of the list, return its index
+- if the target value is less than the value at the middle, narrow the search to the lower half
+- if the target value is greater than the value at the middle, narrow the search to the upper half
+- continue to check until the value is found or the list is empty
+
 Given a sorted array, write a function that searches for a target value in the array using binary search. If the value exists, return its index. If it doesn't exist, return -1.
 
 Example:
-const damnSortedTrackNames = ['BLOOD', 'DNA', 'DUCKWORTH', 'ELEMENT', 'FEAR', 'FEEL', 'GOD', 'HUMBLE', 'LOVE', 'LOYALTY', 'LUST', 'PRIDE', 'XXX', 'YAH'];
+const damnSortedTrackNames = ['BLOOD', 'DNA', 'DUCKWORTH', 'ELEMENT', 'FEAR', 'FEEL', 'GOD', 'HUMBLE', 'LOVE', 'LOYALTY', 'LUST', 'PRIDE', 'XXX', 'YAH']; => start with 'GOD' as the mid value
 
-binarySearch(damnSortedTrackNames, 'FEEL') => return 5
-binarySearch(damnSortedTrackNames, 'BLOOD') => return 0
+binarySearch(damnSortedTrackNames, 'PRIDE') => return 11
+  - 'GOD' < 'PRIDE' => so search upper bound
+  - 'LUST' < 'PRIDE' => so search upper bound
+  - 'XXX' > 'PRIDE' => so search lower bound
+  - 'PRIDE' === 'PRIDE' => target found, so return index of 11
+
 binarySearch(damnSortedTrackNames, 'Money Trees') => return -1
 binarySearch(damnSortedTrackNames, 'Alright') => return -1
 */
@@ -13,26 +25,25 @@ binarySearch(damnSortedTrackNames, 'Alright') => return -1
 /**
  * @param {array} list
  * @param {string} target
+ * @param {number} [start=0] => optional param
+ * @param {number} [end=list.length-1] => optional param
  * @return {number}
  */
 
-const binarySearch = (list, targetValue) => {
-  let start = 0;
-  let end = list.length - 1;
-
-  while (start <= end) {
-    const curr = Math.floor((start + end) / 2);
-
-    if (list[curr] === targetValue) {
-      return curr;
-    } else if (targetValue < list[curr]) {
-      end = curr - 1;
-    } else {
-      start = curr + 1;
-    }
+const binarySearch = (list, targetValue, start = 0, end = list.length - 1) => {
+  if (start > end) {
+    return -1;
   }
 
-  return -1;
+  const mid = Math.floor(start + (end - start) / 2);
+
+  if (list[mid] === targetValue) {
+    return mid;
+  } else if (list[mid] > targetValue) {
+    return binarySearch(list, targetValue, start, mid - 1);
+  } else {
+    return binarySearch(list, targetValue, mid + 1, end);
+  }
 };
 
 export default binarySearch;
